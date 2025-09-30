@@ -4,8 +4,14 @@ import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
   {
-    path: "teste",
-    component: LayoutComponent
+    path: "",
+    component: LayoutComponent,
+    children:[
+      {
+        path: 'suportes',
+        loadChildren: () => import('../suportes/suportes.module').then(m => m.SuportesModule)
+      }
+    ]
   }
 ];
 
