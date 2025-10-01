@@ -1,23 +1,22 @@
-<header class="bg-[rgba(255,89,23,1)] text-center text-bold">
-    <div class="text-3xl text-center text-bold pt-3 font-bold text-white">Título</div>
-    <div class="text-2xl text-white font-semibold p-5">Subtítulo</div>
+<header class="bg-gradient-to-l from-[rgba(255,89,23,1)] to-[rgba(250,120,20,1)] text-center text-bold">
+    <div class="text-3xl text-center text-bold pt-3 font-bold text-white">Conecta Obra</div>
+    <div class="text-2xl text-white font-semibold p-5">Suportes</div>
 
     <nav class="mt-4">
         <ul class="flex justify-center space-x-6 text-white font-semibold">
             <li>
-                <a  class="flex mb-4 hover:text-blue-100 hover:cursor-pointer" > Guias</a>
+                <a routerLink="/guias" class="flex mb-4 hover:text-blue-100 hover:cursor-pointer">Guias</a>
             </li>
             <li>
-                <a  class="flex mb-4 hover:text-blue-100 hover:cursor-pointer"> Suportes</a>
+                <a routerLink="/suportes" class="flex mb-4 hover:text-blue-100 hover:cursor-pointer">Suportes</a>
             </li>
             <li>
-                <a  class="flex mb-4 hover:text-blue-100 hover:cursor-pointer"> Spools</a>
+                <a routerLink="/spools" class="flex mb-4 hover:text-blue-100 hover:cursor-pointer">Spools</a>
             </li>
             <li>
-                <a  class="flex mb-4 hover:text-blue-100 hover:cursor-pointer"> Clientes</a>
+                <a routerLink="/clientes" class="flex mb-4 hover:text-blue-100 hover:cursor-pointer">Clientes</a>
             </li>
         </ul>
     </nav>
 </header>
-
 <router-outlet></router-outlet>

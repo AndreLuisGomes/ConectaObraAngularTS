@@ -1,0 +1,23 @@
+<form class="m-10 flex flex-col gap-6 bg-gradient-to-r from-[rgba(255,245,240)] to-[rgba(250,240,235)] shadow-lg p-6 rounded-lg" [formGroup]="camposForm">
+    <div class="p-2 text-center">
+        <h1 class="font-semibold text-2xl">Adicionando novo Suporte</h1>
+    </div>
+
+    <label class="text-2xl" for="nome">Nome:</label>
+    <input 
+        class="text-2xl w-full p-3 rounded-md shadow-md focus:outline-none focus:ring focus:ring-blue-400 focus:ring-1"
+        type="text" formControlName="nome" id="nome" name="nome" placeholder="Ex: Suporte tipo L">
+    <span class="text-red-500 text-sm ">Campo Obrigatório!</span>
+    
+    <input 
+        class="text-2xl w-full p-3 rounded-md shadow-md focus:outline-none focus:ring focus:ring-blue-400 focus:ring-1"
+        type="text" formControlName="nome" id="tag" name="nome" placeholder="Ex: 235235">
+    <span class="text-red-500 text-sm ">Campo Obrigatório!</span>
+    
+    <input 
+        class="text-2xl w-full p-3 rounded-md shadow-md focus:outline-none focus:ring focus:ring-blue-400 focus:ring-1"
+        type="text" formControlName="nome" id="nome" name="nome" placeholder="Ex: Suporte tipo L">
+    <span class="text-red-500 text-sm ">Campo Obrigatório!</span>
+    <button>Cadastrar</button>
+
+</form>

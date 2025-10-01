@@ -1,1 +1,26 @@
-<p>suporte works!</p>
+
+    <div class="m-10 flex flex-col gap-6 bg-gradient-to-r from-[rgba(255,245,240)] to-[rgba(250,240,235)] shadow-lg p-6 rounded-lg">
+        <a class="w-21 pt-4 pb-4 hover:cursor-pointer rounded-lg inline-block w-30 text-blue-900 hover:text-blue-500 text-2xl font-semibold" routerLink="adicionar">Adicionar novo suporte</a>
+        
+        <div class="mt-2 bg-white h-0.5"></div>
+
+        <form id="categoriaForm" class="flex flex-col" [formGroup]="camposForm">
+            <label class="text-2xl pb-3" for="suporteTag">Pesquisar por Tag:</label>
+            <div class="flex flex-row gap-4">
+                <div class="w-full">
+                    <span class="text-red-500 text-sm "></span>
+                    <input 
+                    type="text" 
+                    class="text-2xl w-full p-3 rounded-md p-2 shadow-md focus:outline-none focus:ring focus:ring-blue-400 focus:ring-1" 
+                    placeholder="Ex: 2357853" 
+                    name="suporteTag" 
+                    formControlName="tag"
+                    id="suporteTag">
+                </div>
+
+                <button class="bg-[rgba(255,89,23,1)] p-3 text-2xl font-semibold rounded-lg shadow-lg text-white hover:text-blue-100" (click)="pesquisar()">Pesquisar</button>
+            </div>
+            
+        </form>
+    </div>
+<div></div>

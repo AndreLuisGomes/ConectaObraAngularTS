@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { TemplateRoutingModule } from './template-routing.module';
 import { LayoutComponent } from './layout/layout.component';
@@ -13,7 +14,7 @@ import { SuportesModule } from '../suportes/suportes.module';
   imports: [
     CommonModule,
     TemplateRoutingModule,
-    SuportesModule
+    FormsModule
   ]
 })
 export class TemplateModule { }
