@@ -1,22 +1,22 @@
 <header class="bg-gradient-to-l from-[rgba(255,89,23,1)] to-[rgba(250,120,20,1)] text-center text-bold">
-    <div class="text-3xl text-center text-bold pt-3 font-bold text-white">Conecta Obra</div>
-    <div class="text-2xl text-white font-semibold p-5">Suportes</div>
+    <div class="text-5xl text-center text-bold p-6 font-bold text-white">Conecta Obra</div>
 
     <nav class="mt-4">
         <ul class="flex justify-center space-x-6 text-white font-semibold">
             <li>
-                <a routerLink="/guias" class="flex mb-4 hover:text-blue-100 hover:cursor-pointer">Guias</a>
+                <a routerLink="/guias" class="flex mb-4 text-2xl hover:text-blue-50 hover:cursor-pointer">Guias</a>
             </li>
             <li>
-                <a routerLink="/suportes" class="flex mb-4 hover:text-blue-100 hover:cursor-pointer">Suportes</a>
+                <a routerLink="/suportes" class="flex mb-4 text-2xl hover:text-blue-50 hover:cursor-pointer">Suportes</a>
             </li>
             <li>
-                <a routerLink="/spools" class="flex mb-4 hover:text-blue-100 hover:cursor-pointer">Spools</a>
+                <a routerLink="/spools" class="flex mb-4 text-2xl hover:text-blue-50 hover:cursor-pointer">Spools</a>
             </li>
             <li>
-                <a routerLink="/clientes" class="flex mb-4 hover:text-blue-100 hover:cursor-pointer">Clientes</a>
+                <a routerLink="/clientes" class="flex mb-4 text-2xl hover:text-blue-50 hover:cursor-pointer">Clientes</a>
             </li>
         </ul>
     </nav>
 </header>
+<div class="text-2xl text-center text-black font-semibold p-5">{{ titulo }}</div>
 <router-outlet></router-outlet>

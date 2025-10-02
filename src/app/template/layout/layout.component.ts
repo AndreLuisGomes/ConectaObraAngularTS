@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LayoutService } from '../../layout.service';
 
 @Component({
   selector: 'app-layout',
@@ -6,6 +7,19 @@ import { Component } from '@angular/core';
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'
 })
-export class LayoutComponent {
+export class LayoutComponent implements OnInit{
+
+  titulo : string = '';
+
+  constructor(private layoutService : LayoutService){
+  }
+  
+  ngOnInit(): void {
+    this.layoutService.titulo$.subscribe(t => {
+      this.titulo = t;
+    })
+  }
+
+  
 
 }

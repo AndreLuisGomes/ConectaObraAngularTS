@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LayoutService } from '../../layout.service';
 
 @Component({
   selector: 'app-suporte',
@@ -8,14 +9,21 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrl: './suporte.component.scss'
 })
 
-export class SuporteComponent {
+export class SuporteComponent implements OnInit {
+
+  titulo: string = 'Suportes';
 
   camposForm: FormGroup;
 
-  constructor(){
+  constructor(private layoutService : LayoutService){
+
     this.camposForm = new FormGroup({
       tag : new FormControl('', Validators.required)
     });
+  }
+
+  ngOnInit(): void {
+    this.layoutService.definirTitulo(this.titulo)
   }
 
   pesquisar(){

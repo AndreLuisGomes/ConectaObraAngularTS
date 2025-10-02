@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { TemplateRoutingModule } from './template-routing.module';
 import { LayoutComponent } from './layout/layout.component';
 import { SuportesModule } from '../suportes/suportes.module';
+import { LayoutService } from '../layout.service';
 
 
 @NgModule({
@@ -17,4 +18,11 @@ import { SuportesModule } from '../suportes/suportes.module';
     FormsModule
   ]
 })
-export class TemplateModule { }
+export class TemplateModule { 
+
+  layoutService : LayoutService;
+
+  constructor(layoutService : LayoutService){
+    this.layoutService = layoutService;
+  }
+}
