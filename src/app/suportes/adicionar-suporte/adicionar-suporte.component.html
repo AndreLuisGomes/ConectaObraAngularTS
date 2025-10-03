@@ -1,22 +1,60 @@
-<form class="m-10 flex flex-col gap-6 bg-gradient-to-r from-[rgba(255,245,240)] to-[rgba(250,240,235)] shadow-lg p-6 rounded-lg" [formGroup]="camposForm">
+<form
+  class="m-10 flex flex-col gap-6 bg-gradient-to-r from-[rgba(255,245,240)] to-[rgba(250,240,235)] shadow-lg p-6 rounded-lg"
+  [formGroup]="camposForm"
+>
+  <label class="text-2xl font-semibold" for="nome">Nome:</label>
+  <input
+    class="text-2xl w-full p-3 rounded-md shadow-md focus:outline-none focus:ring focus:ring-blue-400 focus:ring-1"
+    type="text"
+    formControlName="nome"
+    id="nome"
+    name="nome"
+    placeholder="Ex: Suporte tipo L"
+  />
+  <span *ngIf="verificarCampos('nome')" class="text-red-500 text-sm"
+    >Campo Obrigatório!</span
+  >
 
-    <label class="text-2xl" for="nome">Nome:</label>
-    <input 
-        class="text-2xl w-full p-3 rounded-md shadow-md focus:outline-none focus:ring focus:ring-blue-400 focus:ring-1"
-        type="text" formControlName="nome" id="nome" name="nome" placeholder="Ex: Suporte tipo L">
-    <span class="text-red-500 text-sm ">Campo Obrigatório!</span>
-    
-    <label class="text-2xl" for="nome">Tag:</label>
-    <input 
-        class="text-2xl w-full p-3 rounded-md shadow-md focus:outline-none focus:ring focus:ring-blue-400 focus:ring-1"
-        type="text" formControlName="tag" id="tag" name="tag" placeholder="Ex: 235235">
-    <span class="text-red-500 text-sm ">Campo Obrigatório!</span>
-    
-    <label class="text-2xl" for="nome">Descrição:</label>
-    <input 
-        class="text-2xl w-full p-3 rounded-md shadow-md focus:outline-none focus:ring focus:ring-blue-400 focus:ring-1"
-        type="text" formControlName="descricao" id="descricao" name="descricao" placeholder="Ex: Suporte usado na fabricação de..">
-    <span *ngIf="verificarCampos('descricao')" class="text-red-500 text-sm ">Campo Obrigatório!</span>
-    <button class="text-white text-2xl p-3 bg-[rgba(255,89,23,1)] rounded-md shadow-md hover:bg-orange-400 items-center transition w-1/5 self-center text-center">Cadastrar</button>
+  <label class="text-2xl font-semibold" for="nome">Tag:</label>
+  <input
+    class="text-2xl w-full p-3 rounded-md shadow-md focus:outline-none focus:ring focus:ring-blue-400 focus:ring-1"
+    type="text"
+    formControlName="tag"
+    id="tag"
+    name="tag"
+    placeholder="Ex: 235235"
+  />
+  <span *ngIf="verificarCampos('tag')" class="text-red-500 text-sm"
+    >Campo Obrigatório!</span
+  >
 
+  <label class="text-2xl font-semibold" for="guia">Guia:</label>
+  <select name="guia" id="guia">
+    <option *ngFor="let guia from guias" [value]="guia.nome"
+      class="w-full p-3 border border-gray-300 rounded-lg text-sm bg-white text-gray-800 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out"
+      [value]=""
+      disabled
+      selected
+    >
+      Selecione uma guia
+    </option>
+  </select>
+
+  <label class="text-2xl font-semibold" for="nome">Descrição:</label>
+  <input
+    class="text-2xl w-full p-3 rounded-md shadow-md focus:outline-none focus:ring focus:ring-blue-400 focus:ring-1"
+    type="text"
+    formControlName="descricao"
+    id="descricao"
+    name="descricao"
+    placeholder="Ex: Suporte usado na fabricação de.."
+  />
+  <span *ngIf="verificarCampos('descricao')" class="text-red-500 text-sm"
+    >Campo Obrigatório!</span
+  >
+  <button
+    class="text-white text-2xl p-3 bg-[rgba(255,89,23,1)] rounded-md shadow-md hover:bg-orange-400 items-center transition w-1/5 self-center text-center"
+  >
+    Cadastrar
+  </button>
 </form>

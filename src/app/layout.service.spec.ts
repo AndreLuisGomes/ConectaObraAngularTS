@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LayoutService } from './layout.service';
+import { LayoutService } from './services/layout.service';
 
 describe('LayoutService', () => {
   let service: LayoutService;

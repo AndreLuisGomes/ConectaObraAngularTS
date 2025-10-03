@@ -1,1 +1,31 @@
-<p>cliente works!</p>
+<div class="m-10 flex flex-col gap-6 bg-gradient-to-r from-[rgba(255,245,240)] to-[rgba(250,240,235)] shadow-lg p-6 rounded-lg">
+
+    <form class=" flex flex-col gap-6 bg-gradient-to-r from-[rgba(255,245,240)] to-[rgba(250,240,235)] rounded-lg" [formGroup]="camposForm">
+        
+        <label class="text-2xl font-semibold" for="nome">Nome:</label>
+        <input 
+            class="text-2xl w-full p-3 rounded-md shadow-md focus:outline-none focus:ring focus:ring-blue-400 focus:ring-1"
+            type="text" formControlName="nome" id="nome" name="nome" placeholder="Ex: Cliente 1">
+        <span class="text-red-500 text-sm" *ngIf="verificarCampos('nome')">Campo Obrigatório!</span>
+        
+        <label class="text-2xl font-semibold" for="contato">Contato:</label>
+        <input 
+            class="text-2xl w-full p-3 rounded-md shadow-md focus:outline-none focus:ring focus:ring-blue-400 focus:ring-1"
+            type="text" mask="(00) 0000-0000||(00) 00000-0000" formControlName="contato" id="contato" name="contato" placeholder="Ex: 81 9 9999 9999">
+        <span class="text-red-500 text-sm" *ngIf="verificarCampos('contato')">Campo Obrigatório!</span>
+        
+        <label class="text-2xl font-semibold" for="localizacao">Localização da Sede:</label>
+        <input 
+            class="text-2xl w-full p-3 rounded-md shadow-md focus:outline-none focus:ring focus:ring-blue-400 focus:ring-1"
+            type="text" formControlName="localizacaoSede" id="localizacaoSede" name="localizacaoSede" placeholder="Ex: Rua Do Recife">
+        <span *ngIf="verificarCampos('localizacaoSede')" class="text-red-500 text-sm ">Campo Obrigatório!</span>
+        <button class="text-white text-2xl p-3 bg-[rgba(255,89,23,1)] rounded-md shadow-md hover:bg-orange-400 items-center transition w-1/5 self-center text-center" (click)="cadastrarCliente()">Cadastrar</button>
+        <span class="text-center text-2xl">{{ cadastrado }}</span>
+    </form>
+
+    <h1 class="text-3xl font-semibold text-center">Lista de Clientes</h1>
+
+    <div *ngFor="let cliente from clientes">
+        <div>{{cliente.nome}}</div>
+    </div>
+</div>

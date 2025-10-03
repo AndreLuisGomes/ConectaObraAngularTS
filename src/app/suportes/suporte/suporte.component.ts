@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { LayoutService } from '../../layout.service';
+import { LayoutService } from '../../services/layout.service';
 
 @Component({
   selector: 'app-suporte',
@@ -10,8 +10,6 @@ import { LayoutService } from '../../layout.service';
 })
 
 export class SuporteComponent implements OnInit {
-
-  titulo: string = 'Suportes';
 
   camposForm: FormGroup;
 
@@ -23,7 +21,7 @@ export class SuporteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.layoutService.definirTitulo(this.titulo)
+    this.layoutService.definirTitulo('Listar Suportes')
   }
 
   pesquisar(){

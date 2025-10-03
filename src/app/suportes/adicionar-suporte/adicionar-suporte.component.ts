@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormControlName, FormGroup, NgModel, Validators } from '@angular/forms';
-import { LayoutService } from '../../layout.service';
+import { LayoutService } from '../../services/layout.service';
 
 @Component({
   selector: 'app-adicionar-suporte',
@@ -10,20 +10,20 @@ import { LayoutService } from '../../layout.service';
 })
 export class AdicionarSuporteComponent implements OnInit{
 
-  titulo : string = 'Adicionar Novo Suporte'
-
   camposForm : FormGroup;
 
   constructor(private layoutService : LayoutService){
     this.camposForm = new FormGroup({
       nome : new FormControl(null, Validators.required),
       tag: new FormControl(null, Validators.required),
+      descricao : new FormControl(null, Validators.required),
       guia: new FormControl(null, Validators.required)
     })
   }
 
   ngOnInit(): void {
-    this.layoutService.definirTitulo(this.titulo);
+    this.layoutService.definirTitulo('Adicionar Novo Suporte');
+
   }
 
   verificarCampos(campo : string): boolean{

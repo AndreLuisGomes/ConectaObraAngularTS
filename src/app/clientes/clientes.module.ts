@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { ClientesRoutingModule } from './clientes-routing.module';
 import { ClienteComponent } from './cliente/cliente.component';
+import { ReactiveFormsModule} from '@angular/forms';
+import { NgxMaskDirective, provideNgxMask } from "ngx-mask";
 
 
 @NgModule({
@@ -11,7 +13,14 @@ import { ClienteComponent } from './cliente/cliente.component';
   ],
   imports: [
     CommonModule,
-    ClientesRoutingModule
+    ReactiveFormsModule,
+    ClientesRoutingModule,
+    NgxMaskDirective
+  ],
+  providers: [
+    provideNgxMask() 
   ]
 })
-export class ClientesModule { }
+export class ClientesModule {
+
+ }
