@@ -1,5 +1,8 @@
-export class Cliente{
-    nome?: string;
-    contato?: string;
-    localizacaoSede?: string;
+export interface Cliente{
+    id: string
+    nome: string;
+    contato: string;
+    localizacaoSede: string;
+
+    preparaEditar: boolean
 }

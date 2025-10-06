@@ -22,7 +22,7 @@ export class AdicionarSuporteComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.layoutService.definirTitulo('Adicionar Novo Suporte');
+    this.layoutService.definirTitulo('Adicionar Suport');
 
   }
 

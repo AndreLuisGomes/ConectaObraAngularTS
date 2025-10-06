@@ -1,29 +1,29 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Cliente } from '../../models/cliente';
+import { ClienteFiltros } from '../../models/clienteFiltro';
 import { ClienteService } from '../../services/cliente.service';
 import { LayoutService } from '../../services/layout.service';
-import { ClienteFiltros } from '../../models/clienteFiltro';
 
 @Component({
-  selector: 'app-cliente',
+  selector: 'app-adicionar-cliente',
   standalone: false,
-  templateUrl: './cliente.component.html',
-  styleUrl: './cliente.component.scss',
+  templateUrl: './adicionar-cliente.component.html',
+  styleUrl: './adicionar-cliente.component.scss',
 })
-export class ClienteComponent implements OnInit {
-  
-  filtros : ClienteFiltros = {
-    nome : '',
-    contato : '',
-    localizacaoSede : ''
-  }
+export class AdicionarClienteComponent {
+  filtros: ClienteFiltros = {
+    nome: '',
+    contato: '',
+    localizacaoSede: '',
+  };
 
   cadastrado = '';
   clientes: Cliente[] = [];
   camposForm: FormGroup;
 
   constructor(
+    private cdRef: ChangeDetectorRef,
     private clienteService: ClienteService,
     private layoutService: LayoutService
   ) {
@@ -35,28 +35,28 @@ export class ClienteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.layoutService.definirTitulo('Listar Clientes');
+    this.layoutService.definirTitulo('Cadastrar Clientes');
     this.listarClientes();
   }
 
   listarClientes(): void {
-
     const { nome, contato, localizacaoSede } = this.filtros;
 
-    this.clienteService.obterClientesPorParametro(
-      nome.trim() || null,
-      contato.trim() || null,
-      localizacaoSede.trim() || null
-    ).subscribe({
-      next: (lista) => {
-        this.clientes = lista;
-      },
-      error: (erro) => console.error(erro),
-    });
+    this.clienteService
+      .obterClientesPorParametro(
+        nome.trim() || null,
+        contato.trim() || null,
+        localizacaoSede.trim() || null
+      )
+      .subscribe({
+        next: (lista) => {
+          this.clientes = lista;
+        },
+        error: (erro) => console.error(erro),
+      });
   }
 
   cadastrarCliente(): void {
-    this.ngOnInit();
     this.camposForm.markAllAsTouched();
 
     if (this.camposForm.valid) {
@@ -76,14 +76,5 @@ export class ClienteComponent implements OnInit {
   verificarCampos(campo: string) {
     const control = this.camposForm.get(campo);
     return !!control && control?.invalid && (control.dirty || control?.touched);
-  }
-
-  apagarCliente(cliente: string): void {
-    console.log(cliente);
-    this.clienteService.deletarClientePorId(cliente).subscribe({
-      next: () => this.ngOnInit(),
-      error: err => console.error(err)
-    }
-    );
   }
 }

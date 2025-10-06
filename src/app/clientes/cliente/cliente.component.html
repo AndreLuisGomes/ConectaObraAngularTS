@@ -1,31 +1,35 @@
-<div class="m-10 flex flex-col gap-6 bg-gradient-to-r from-[rgba(255,245,240)] to-[rgba(250,240,235)] shadow-lg p-6 rounded-lg">
-
-    <form class=" flex flex-col gap-6 bg-gradient-to-r from-[rgba(255,245,240)] to-[rgba(250,240,235)] rounded-lg" [formGroup]="camposForm">
-        
-        <label class="text-2xl font-semibold" for="nome">Nome:</label>
-        <input 
-            class="text-2xl w-full p-3 rounded-md shadow-md focus:outline-none focus:ring focus:ring-blue-400 focus:ring-1"
-            type="text" formControlName="nome" id="nome" name="nome" placeholder="Ex: Cliente 1">
-        <span class="text-red-500 text-sm" *ngIf="verificarCampos('nome')">Campo Obrigatório!</span>
-        
-        <label class="text-2xl font-semibold" for="contato">Contato:</label>
-        <input 
-            class="text-2xl w-full p-3 rounded-md shadow-md focus:outline-none focus:ring focus:ring-blue-400 focus:ring-1"
-            type="text" mask="(00) 0000-0000||(00) 00000-0000" formControlName="contato" id="contato" name="contato" placeholder="Ex: 81 9 9999 9999">
-        <span class="text-red-500 text-sm" *ngIf="verificarCampos('contato')">Campo Obrigatório!</span>
-        
-        <label class="text-2xl font-semibold" for="localizacao">Localização da Sede:</label>
-        <input 
-            class="text-2xl w-full p-3 rounded-md shadow-md focus:outline-none focus:ring focus:ring-blue-400 focus:ring-1"
-            type="text" formControlName="localizacaoSede" id="localizacaoSede" name="localizacaoSede" placeholder="Ex: Rua Do Recife">
-        <span *ngIf="verificarCampos('localizacaoSede')" class="text-red-500 text-sm ">Campo Obrigatório!</span>
-        <button class="text-white text-2xl p-3 bg-[rgba(255,89,23,1)] rounded-md shadow-md hover:bg-orange-400 items-center transition w-1/5 self-center text-center" (click)="cadastrarCliente()">Cadastrar</button>
-        <span class="text-center text-2xl">{{ cadastrado }}</span>
-    </form>
-
-    <h1 class="text-3xl font-semibold text-center">Lista de Clientes</h1>
-
-    <div *ngFor="let cliente from clientes">
-        <div>{{cliente.nome}}</div>
+<a routerLink="adicionar"
+    class="pt-4 pb-4 hover:cursor-pointer rounded-lg text-blue-900 hover:text-blue-500 text-2xl mb-4 font-semibold">Adicionar
+    Clientes</a>
+    <div class="h-0.5 bg-white mb-4"></div>
+<h2 class="text-3xl font-bold mb-4 text-gray-800 pb-2">Clientes Cadastrados - ({{
+    clientes.length }})</h2>
+<div class="h-0.5 bg-white mb-4"></div>
+<div class="shadow-md rounded-md overflow-hidden border border-gray-100">
+    <div class="hidden md:grid grid-cols-12 gap-4 p-4 text-xs bg-gray-700 text-white md:text-sm tracking-wider">
+        <div class="col-span-2 text-2xl text-center">Ações</div>
+        <div class="col-span-3 text-2xl text-center">Nome</div>
+        <div class="col-span-3 text-center text-2xl">Contato</div>
+        <div class="col-span-4 text-center text-2xl">Localização</div>
     </div>
+
+
+    <div *ngIf="clientes.length > 0; else noData">
+        <div *ngFor="let cliente of clientes; let i = index" [ngClass]="i % 2 === 0 ? 'bg-white' : 'bg-gray-50'"
+            class="grid grid-cols-12 gap-4 p-4 text-gray-800 border-b last:border-b-0 transition duration-200 ease-in-out">
+            <div *ngIf="!cliente.preparaEditar" class="col-span-2 text-sm text-center font-medium text-gray-500">
+                <button class="btn-delete p-2 rounded-md bg-red-500 hover:bg-red-400 text-white"
+                    (click)="apagarCliente(cliente.id)" type="button">Apagar</button>
+            </div>
+            <div class="col-span-3 text-5xl font-semibold text-center text-base text-orange-600">{{ cliente.nome}}</div>
+            <div class="col-span-3 text-2xl text-sm text-center"> {{ cliente.contato | mask:'(00) 00000-0000'}}</div>
+            <div class="col-span-4 text-2xl text-sm text-gray-600 text-center">{{ cliente.localizacaoSede }}</div>
+        </div>
+    </div>
+
+    <ng-template #noData>
+        <div class="p-8 text-center text-gray-500 bg-white">
+            Nenhum cliente cadastrado no momento.
+        </div>
+    </ng-template>
 </div>

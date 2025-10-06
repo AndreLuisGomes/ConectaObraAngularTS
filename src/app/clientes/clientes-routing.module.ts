@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClienteComponent } from './cliente/cliente.component';
+import { AdicionarClienteComponent } from './adicionar-cliente/adicionar-cliente.component';
 
 const routes: Routes = [
   {
     path: '',
     component: ClienteComponent
+  },{
+    path: 'adicionar',
+    component: AdicionarClienteComponent
   }
 ];
 
