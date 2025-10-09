@@ -1,9 +1,9 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Cliente } from '../../models/cliente';
+import { ClienteDTO } from '../../models/dtos/clienteDTO';
 import { ClienteService } from '../../services/cliente.service';
 import { LayoutService } from '../../services/layout.service';
-import { ClienteFiltros } from '../../models/clienteFiltro';
 
 @Component({
   selector: 'app-cliente',
@@ -13,7 +13,7 @@ import { ClienteFiltros } from '../../models/clienteFiltro';
 })
 export class ClienteComponent implements OnInit {
   
-  filtros : ClienteFiltros = {
+  filtros : ClienteDTO = {
     nome : '',
     contato : '',
     localizacaoSede : ''

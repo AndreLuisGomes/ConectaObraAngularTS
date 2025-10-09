@@ -1,6 +1,6 @@
 <a routerLink="adicionar"
     class="pt-4 pb-4 hover:cursor-pointer rounded-lg text-blue-900 hover:text-blue-500 text-2xl mb-4 font-semibold">Adicionar
-    Clientes</a>
+    novo cliente</a>
     <div class="h-0.5 bg-white mb-4"></div>
 <h2 class="text-3xl font-bold mb-4 text-gray-800 pb-2">Clientes Cadastrados - ({{
     clientes.length }})</h2>
@@ -10,7 +10,7 @@
         <div class="col-span-2 text-2xl text-center">Ações</div>
         <div class="col-span-3 text-2xl text-center">Nome</div>
         <div class="col-span-3 text-center text-2xl">Contato</div>
-        <div class="col-span-4 text-center text-2xl">Localização</div>
+        <div class="col-span-4 text-center text-2xl">Localização da Sede</div>
     </div>
 
 
@@ -28,7 +28,7 @@
     </div>
 
     <ng-template #noData>
-        <div class="p-8 text-center text-gray-500 bg-white">
+        <div class="p-8 text-2xl text-center text-gray-500 bg-white">
             Nenhum cliente cadastrado no momento.
         </div>
     </ng-template>

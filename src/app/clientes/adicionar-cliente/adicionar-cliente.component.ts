@@ -1,7 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Cliente } from '../../models/cliente';
-import { ClienteFiltros } from '../../models/clienteFiltro';
 import { ClienteService } from '../../services/cliente.service';
 import { LayoutService } from '../../services/layout.service';
 
@@ -12,18 +11,12 @@ import { LayoutService } from '../../services/layout.service';
   styleUrl: './adicionar-cliente.component.scss',
 })
 export class AdicionarClienteComponent {
-  filtros: ClienteFiltros = {
-    nome: '',
-    contato: '',
-    localizacaoSede: '',
-  };
 
   cadastrado = '';
   clientes: Cliente[] = [];
   camposForm: FormGroup;
 
   constructor(
-    private cdRef: ChangeDetectorRef,
     private clienteService: ClienteService,
     private layoutService: LayoutService
   ) {
@@ -36,24 +29,6 @@ export class AdicionarClienteComponent {
 
   ngOnInit(): void {
     this.layoutService.definirTitulo('Cadastrar Clientes');
-    this.listarClientes();
-  }
-
-  listarClientes(): void {
-    const { nome, contato, localizacaoSede } = this.filtros;
-
-    this.clienteService
-      .obterClientesPorParametro(
-        nome.trim() || null,
-        contato.trim() || null,
-        localizacaoSede.trim() || null
-      )
-      .subscribe({
-        next: (lista) => {
-          this.clientes = lista;
-        },
-        error: (erro) => console.error(erro),
-      });
   }
 
   cadastrarCliente(): void {

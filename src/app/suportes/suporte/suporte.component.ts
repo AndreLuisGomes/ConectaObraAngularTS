@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LayoutService } from '../../services/layout.service';
+import { Suporte } from '../../models/suporte';
 
 @Component({
   selector: 'app-suporte',
@@ -10,6 +11,8 @@ import { LayoutService } from '../../services/layout.service';
 })
 
 export class SuporteComponent implements OnInit {
+
+  suportes: Suporte[] = []
 
   camposForm: FormGroup;
 

@@ -1,0 +1,36 @@
+<a routerLink="adicionar"
+    class="pt-4 pb-4 hover:cursor-pointer rounded-lg text-blue-900 hover:text-blue-500 text-2xl mb-4 font-semibold">Adicionar
+    nova guia</a>
+    <div class="h-0.5 bg-white mb-4"></div>
+<h2 class="text-3xl font-bold mb-4 text-gray-800 pb-2">Guias Cadastradas - ({{
+    guias.length }})</h2>
+<div class="h-0.5 bg-white mb-4"></div>
+<div class="shadow-md rounded-md overflow-hidden border border-gray-100">
+    <div class="hidden md:grid grid-cols-12 gap-4 p-4 text-xs bg-gray-700 text-white md:text-sm tracking-wider">
+        <div class="col-span-2 text-2xl text-center">Ações</div>
+        <div class="col-span-2 text-2xl text-center">Nome</div>
+        <div class="col-span-2 text-center text-2xl">Cliente</div>
+        <div class="col-span-3 text-center text-2xl">Status</div>
+        <div class="col-span-3 text-center text-2xl">Localização</div>
+    </div>
+
+
+    <div *ngIf="guias.length > 0; else noData">
+        <div *ngFor="let guia of guias; let i = index" [ngClass]="i % 2 === 0 ? 'bg-white' : 'bg-gray-50'"
+            class="grid grid-cols-12 gap-4 p-4 text-gray-800 border-b last:border-b-0 transition duration-200 ease-in-out">
+            <div class="col-span-2 text-sm text-center font-medium text-gray-500">
+                <button class="btn-delete p-2 rounded-md bg-red-500 hover:bg-red-400 text-white"
+                    type="button">Apagar</button>
+            </div>
+            <div class="col-span-3 text-2xl font-semibold text-center text-base text-orange-600">{{ guia.nome}}</div>
+            <div class="col-span-3 text-2xl text-sm text-center"></div>
+            <div class="col-span-4 text-2xl text-sm text-gray-600 text-center"></div>
+        </div>
+    </div>
+
+    <ng-template #noData>
+        <div class="p-8 text-center text-2xl text-gray-500 bg-white">
+            Nenhuma guia cadastrada no momento.
+        </div>
+    </ng-template>
+</div>

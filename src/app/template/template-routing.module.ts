@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { ClientesModule } from '../clientes/clientes.module';
+import { GuiasModule } from '../guias/guias.module';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
       {
         path: 'clientes',
         loadChildren: () => import('../clientes/clientes.module').then(m => ClientesModule)
+      },
+      {
+        path: 'guias',
+        loadChildren: () => import('../guias/guias.module').then(m => GuiasModule)
       }
     ]
   }
