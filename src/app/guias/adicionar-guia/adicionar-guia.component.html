@@ -10,19 +10,27 @@
         type="text" formControlName="nome" id="nome" name="nome" placeholder="Ex: Cliente 1">
     <span class="text-red-500 text-sm" *ngIf="verificarCampos('nome')">Campo Obrigatório!</span>
 
-    <label class="text-2xl font-semibold text-gray-700" for="contato">Contato:</label>
-    <input
-        class="text-2xl w-full p-3 rounded-md shadow-md focus:outline-none focus:ring focus:ring-blue-400 focus:ring-1"
-        type="text" mask="(00) 00000-0000" formControlName="contato" id="contato" name="contato"
-        placeholder="Ex: 81 9 9999 9999">
-    <span class="text-red-500 text-sm" *ngIf="verificarCampos('contato')">Campo Obrigatório!</span>
+    <label class="text-2xl font-semibold text-gray-700" formControName="status" for="status">Status</label>
+    <select class="p-3 text-2xl text-gray-700" name="status" id="status">
+        <option disabled selected>Selecione uma opção de Status</option>
+        <option *ngFor="let valor of status" formControName="status" name="status" (value)="valor">{{ valor }}</option>
+    </select>
+    <span class="text-red-500 text-sm" *ngIf="verificarCampos('status')">Campo Obrigatório!</span>
 
-    <label class="text-2xl font-semibold text-gray-700" for="localizacao">Localização da Sede:</label>
+
+    <label class="text-2xl font-semibold text-gray-700" formControName="status" for="status">Status</label>
+    <select class="p-3 text-2xl text-gray-700" name="status" id="status">
+        <option disabled selected>Selecione um Cliente</option>
+        <option *ngFor="let valor of clientes" formControName="clienteNome" name="clienteNome" (value)="valor">{{ valor }}</option>
+    </select>
+    <span class="text-red-500 text-sm" *ngIf="verificarCampos('clienteNome')">Campo Obrigatório!</span>
+    
+    <label class="text-2xl font-semibold text-gray-700" for="localizacao">Localização da Obra:</label>
     <input
         class="text-2xl w-full p-3 rounded-md shadow-md focus:outline-none focus:ring focus:ring-blue-400 focus:ring-1"
-        type="text" formControlName="localizacaoSede" id="localizacaoSede" name="localizacaoSede"
+        type="text" formControlName="localizacao" id="localizacao" name="localizacao"
         placeholder="Ex: Rua Do Recife">
-    <span *ngIf="verificarCampos('localizacaoSede')" class="text-red-500 text-sm ">Campo Obrigatório!</span>
+    <span *ngIf="verificarCampos('localizacao')" class="text-red-500 text-sm ">Campo Obrigatório!</span>
     <button
         class="text-white text-2xl p-3 bg-[rgba(255,89,23,1)] rounded-md shadow-md hover:bg-orange-400 items-center transition w-1/5 self-center text-center"
         type="submit" (click)="cadastrarGuia(); $event.stopPropagation()">Cadastrar</button>

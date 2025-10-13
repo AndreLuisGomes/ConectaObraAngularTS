@@ -5,6 +5,7 @@ import { GuiasRoutingModule } from './guias-routing.module';
 import { GuiaComponent } from './guia/guia.component';
 import { AdicionarGuiaComponent } from './adicionar-guia/adicionar-guia.component';
 import { FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 
 @NgModule({
@@ -15,8 +16,9 @@ import { FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     GuiasRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskDirective
   ],
-  providers: []
+  providers: [provideNgxMask()]
 })
 export class GuiasModule { }
