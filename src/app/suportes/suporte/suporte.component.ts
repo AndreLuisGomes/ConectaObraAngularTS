@@ -19,7 +19,7 @@ export class SuporteComponent implements OnInit {
   constructor(private layoutService : LayoutService){
 
     this.camposForm = new FormGroup({
-      tag : new FormControl('', Validators.required)
+      tag: new FormControl('', Validators.required)
     });
   }
 

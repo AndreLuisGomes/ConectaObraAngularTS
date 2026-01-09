@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LayoutService } from '../../services/layout.service';
-import { HttpClient } from '@angular/common/http';
-import { Status } from '../../models/status';
 import { StatusService } from '../../services/status.service';
 import { Cliente } from '../../models/cliente';
-import { ClientesRoutingModule } from '../../clientes/clientes-routing.module';
 import { ClienteService } from '../../services/cliente.service';
 import { map } from 'rxjs';
 
@@ -64,4 +61,6 @@ export class AdicionarGuiaComponent implements OnInit{
     const campo = this.camposForm.get(valor);
     return !!campo && campo?.invalid && (campo.dirty || campo?.touched)  
   }
+
+
 }

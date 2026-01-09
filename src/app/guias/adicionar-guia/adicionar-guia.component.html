@@ -10,18 +10,19 @@
         type="text" formControlName="nome" id="nome" name="nome" placeholder="Ex: Cliente 1">
     <span class="text-red-500 text-sm" *ngIf="verificarCampos('nome')">Campo Obrigatório!</span>
 
-    <label class="text-2xl font-semibold text-gray-700" formControName="status" for="status">Status</label>
-    <select class="p-3 text-2xl text-gray-700" name="status" id="status">
+    <label class="text-2xl font-semibold text-gray-700" for="status">Status</label>
+    <select class="p-3 text-2xl text-gray-700" formControName="status" name="status" id="status">
         <option disabled selected>Selecione uma opção de Status</option>
-        <option *ngFor="let valor of status" formControName="status" name="status" (value)="valor">{{ valor }}</option>
+        <option *ngFor="let valor of status" [value]="valor">{{ valor }}</option>
     </select>
+    <p>Valor selecionado: {{ camposForm.get('status')?.value }}</p>
     <span class="text-red-500 text-sm" *ngIf="verificarCampos('status')">Campo Obrigatório!</span>
 
 
     <label class="text-2xl font-semibold text-gray-700" formControName="status" for="status">Status</label>
-    <select class="p-3 text-2xl text-gray-700" name="status" id="status">
+    <select class="p-3 text-2xl text-gray-700" formControName="clienteNome" name="clienteNome" id="status">
         <option disabled selected>Selecione um Cliente</option>
-        <option *ngFor="let valor of clientes" formControName="clienteNome" name="clienteNome" (value)="valor">{{ valor }}</option>
+        <option *ngFor="let valor of clientes" [value]="valor">{{ valor }}</option>
     </select>
     <span class="text-red-500 text-sm" *ngIf="verificarCampos('clienteNome')">Campo Obrigatório!</span>
     

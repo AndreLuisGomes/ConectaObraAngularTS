@@ -6,3 +6,13 @@ export interface usuario{
     funcao: string
     setor: string
 }
+
+export interface UsuarioLoginRequest{
+    nome: string;
+    senha: string;
+}
+
+export interface AuthResponse{
+    nome: string | null;
+    role: string | null;
+}
