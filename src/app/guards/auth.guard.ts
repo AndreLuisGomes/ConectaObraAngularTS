@@ -1,4 +1,4 @@
-import { ActivatedRouteSnapshot, CanActivate, CanActivateFn, GuardResult, MaybeAsync, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanActivateFn, GuardResult, MaybeAsync, Route, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { Injectable } from '@angular/core';
 
@@ -7,10 +7,10 @@ import { Injectable } from '@angular/core';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(router : Router, authService : AuthService){
+  constructor(private router : Router, private authService : AuthService){
 
   }
-  canActivate(): boolean {
-    return AuthService.
+  canActivate(): boolean | UrlTree {
+    return this.authService.usuarioEstaLogado() ? true : this.router.createUrlTree(['/auth/fazer-login'])
   }
 }

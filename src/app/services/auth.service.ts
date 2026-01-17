@@ -15,13 +15,16 @@ export class AuthService {
 
   }
 
-  usuario = signal<AuthResponse | null>(this.obterUsuarioDoStorage());
+  usuario = signal<AuthResponse | null>(null);
 
   usuarioEstaLogado = computed(() => (!!this.usuario()));
 
   logar(usuarioLoginRequest: UsuarioLoginRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.apiURL}/logar`, usuarioLoginRequest);
+  }
 
+  deslogar(){
+    this.usuario.set(null);
   }
 
   obterUsuarioDoStorage() : AuthResponse | null{
@@ -32,5 +35,4 @@ export class AuthService {
     }
     return null;
   }
-
 }
