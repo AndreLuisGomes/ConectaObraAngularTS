@@ -1,6 +1,6 @@
 import { computed, inject, Injectable, signal, Signal, Type } from '@angular/core';
 import { Route, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { AuthResponse, UsuarioLoginRequest } from '../models/usuario';
 import { HttpClient } from '@angular/common/http';
 
@@ -15,16 +15,24 @@ export class AuthService {
 
   }
 
-  usuario = signal<AuthResponse | null>(null);
+  usuarioLogado = signal<AuthResponse | null>(this.obterUsuarioDoStorage());
 
-  usuarioEstaLogado = computed(() => (!!this.usuario()));
+  usuarioEstaLogado = computed(() => !!this.usuarioLogado());
+
+  public usuario = this.usuarioLogado.asReadonly();
 
   logar(usuarioLoginRequest: UsuarioLoginRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiURL}/logar`, usuarioLoginRequest);
+    return this.http.post<AuthResponse>(`${this.apiURL}/logar`, usuarioLoginRequest)
+    .pipe(tap((res) => {
+      this.usuarioLogado.set(res)
+      localStorage.setItem('usuario', JSON.stringify(res))
+      this.deslogar();
+    }))
   }
 
   deslogar(){
-    this.usuario.set(null);
+    this.usuarioLogado.set(null);
+    localStorage.removeItem('')
   }
 
   obterUsuarioDoStorage() : AuthResponse | null{

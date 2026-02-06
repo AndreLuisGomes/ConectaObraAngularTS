@@ -5,7 +5,6 @@
         rounded-md border border-orange-700 from-[rgba(255,235,223)] to-[rgba(250,240,235)] shadow-2xl">
             <h1 class="text-xl ">Fazer Login</h1>
             <span *ngIf="campoEstaValido('nome')">Nome de usuário deve ser preenchido!</span>
-            <span *ngIf="campoEstaBlank('nome')">Nome de usuário deve ter ao menos 3 caracteres!</span>
             <div class="">
                 <label class="mr-3" for="Nome">Nome:</label>
                 <input class="p-2 rounded-md border-orange-400 border" name="nome" type="text">
@@ -22,7 +21,7 @@
                     <input type="checkbox" class="" (change)="mostrarSenha()"><span>Mostrar Senha</span>
                 </div>
             </div>
-            <button [disabled]="btnLogarDesativado()" type="submit"
+            <button [disabled]="!btnLogar()" type="submit"
                 class="text-xl text-white border-[1px] border-orange-600 active:bg-orange-300  active:border-orange-400 disabled:cursor-not-allowed w-[50%] bg-orange-500 hover:bg-orange-400 p-2 rounded-md">Logar</button>
         </div>
     </form>
