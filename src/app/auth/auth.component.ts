@@ -1,61 +1,63 @@
-import { Component, computed, inject, signal, Signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthResponse, UsuarioLoginRequest } from '../models/usuario';
-import { Router } from '@angular/router';
+import { Component, inject, signal } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, UrlTree } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './auth.component.html'
 })
 export class AuthComponent {
 
   btnLogar = signal<boolean>(true);
   senhaValida = signal(true);
-  usuarioErro = 0;
-  loginForm! : FormGroup; 
+  usuarioErro = signal<number>(0);
+  loginForm!: FormGroup;
   mostrarSenhaBool: boolean = false;
   authService: AuthService = inject(AuthService);
-  router : Router = inject(Router);
+  router: Router = inject(Router);
 
-  constructor(){
+  constructor() {
     this.loginForm = new FormGroup({
-      nome : new FormControl<string>('', [Validators.required]),
-      senha :  new FormControl<string>('', [Validators.required])
+      nome: new FormControl('', [Validators.required]),
+      senha: new FormControl('', [Validators.required])
     })
   }
 
-  logar(){
+  logar(): null | UrlTree {
     this.loginForm.markAllAsTouched();
+    console.log('Entrando no logar');
 
-    const loginForm = this.loginForm.getRawValue() as UsuarioLoginRequest;
-
-    if(this.loginForm.valid){
+    if (!!this.loginForm.valid) {
+      console.log('Entrando no If')
       this.btnLogar.set(false);
-      this.authService.logar(loginForm).subscribe({
-        next: (authResponse) => {        
+      this.authService.logar(this.loginForm.value).subscribe({
+        next: () => {
+          console.log('Entrando no next')
+
           this.btnLogar.set(true)
-          // this.router.navigate(['/clientes']);
+          return this.router.createUrlTree(['/clientes'])
         },
         error: (err) => {
           console.error(err);
-          this.btnLogar.set(false);
+          this.btnLogar.set(true);
         }
       })
-    }else{
-      this.usuarioErro = 1;
     }
+    this.usuarioErro.set(1);
+    console.log('Deu errado!')
+    return null;
   }
 
-  campoEstaValido(campoNome : string) : boolean{
+  campoEstaValido(campoNome: string): boolean {
     const campo = this.loginForm.get(campoNome);
-    return  !!campo && campo.valid && (campo?.touched || campo?.dirty)
+    return !!campo && campo.valid && (campo?.touched || campo?.dirty)
   }
 
-  mostrarSenha(){
+  mostrarSenha() {
     this.mostrarSenhaBool = !this.mostrarSenhaBool;
   }
 }

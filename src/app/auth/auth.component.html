@@ -1,24 +1,22 @@
 <div
     class="flex items-center bg-gradient-to-l text-orange-700 from-[rgba(255,89,23,1)] to-[rgba(250,120,20,1)] justify-center h-screen w-screen">
-    <form (submit)="logar()" class="h-[50%] w-[30%] items-center justify-center rounded-md">
-        <div class="text-center font-semibold items-center flex flex-col justify-evenly p-5 grid-flow-col h-full w-full bg-gradient-to-r 
+    <form (ngSubmit)="logar()" [formGroup]="loginForm" class="h-[50%] w-[30%] items-center justify-center rounded-md">
+        <div class="font-semibold items-center flex flex-col justify-evenly p-5 grid-flow-col h-full w-full text-start bg-gradient-to-r 
         rounded-md border border-orange-700 from-[rgba(255,235,223)] to-[rgba(250,240,235)] shadow-2xl">
             <h1 class="text-xl ">Fazer Login</h1>
-            <span *ngIf="campoEstaValido('nome')">Nome de usuário deve ser preenchido!</span>
-            <div class="">
+            <span class="text-blue-700" *ngIf="campoEstaValido('nome')">Nome de usuário deve ser preenchido!</span>
+            <div>
                 <label class="mr-3" for="Nome">Nome:</label>
                 <input class="p-2 rounded-md border-orange-400 border" name="nome" type="text">
             </div>
-            <div class="flex flex-col gap-4 items-start">
-                <div>
-                    <span *ngIf="campoEstaValido('senha')">Senha deve ser preenchida!</span>
-                    <label for="senha" class="mr-3">Senha:</label>
-                    <input name="senha"
-                        class="p-2 rounded-md border-orange-400 border outline-none focus:border-black focus:border-2 focus:border-l-orange-900 focus:ring-black "
-                        [type]="mostrarSenhaBool ? 'text' : 'password'">
-                </div>
-                <div class="items-center flex justify-center w-full gap-2">
-                    <input type="checkbox" class="" (change)="mostrarSenha()"><span>Mostrar Senha</span>
+            <span class="text-blue-700" *ngIf="campoEstaValido('senha')">Senha deve ser preenchida!</span>
+            <div>
+                <label for="senha" class="mr-3">Senha:</label>
+                <input name="senha"
+                    class="p-2 rounded-md border-orange-400 border outline-none focus:border-black focus:border-2 focus:border-l-orange-900 focus:ring-black "
+                    [type]="mostrarSenhaBool ? 'text' : 'password'">
+                <div class="items-center mt-4 flex justify-center w-full gap-2">
+                    <input type="checkbox" (change)="mostrarSenha()"><span>Mostrar Senha</span>
                 </div>
             </div>
             <button [disabled]="!btnLogar()" type="submit"

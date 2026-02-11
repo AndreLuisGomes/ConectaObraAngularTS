@@ -23,10 +23,9 @@ export class AuthService {
 
   logar(usuarioLoginRequest: UsuarioLoginRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.apiURL}/logar`, usuarioLoginRequest)
-    .pipe(tap((res) => {
-      this.usuarioLogado.set(res)
-      localStorage.setItem('usuario', JSON.stringify(res))
-      this.deslogar();
+    .pipe(tap((authResponse) => {
+      this.usuarioLogado.set(authResponse)
+      localStorage.setItem('usuario', JSON.stringify(authResponse))
     }))
   }
 
