@@ -31,7 +31,7 @@ export class AuthService {
 
   deslogar(){
     this.usuarioLogado.set(null);
-    localStorage.removeItem('')
+    localStorage.removeItem('usuario');
   }
 
   obterUsuarioDoStorage() : AuthResponse | null{
