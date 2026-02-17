@@ -3,21 +3,24 @@
     <form (ngSubmit)="logar()" [formGroup]="loginForm" class="h-[50%] w-[30%] items-center justify-center rounded-md">
         <div class="font-semibold items-center flex flex-col justify-evenly p-5 grid-flow-col h-full w-full text-start bg-gradient-to-r 
         rounded-md border border-orange-700 from-[rgba(255,235,223)] to-[rgba(250,240,235)] shadow-2xl">
-            <h1 class="text-xl ">Fazer Login</h1>
+            <h1 class="text-xl">Fazer Login</h1>
             <span class="text-blue-700" *ngIf="campoEstaValido('nome')">Nome de usuário deve ser preenchido!</span>
             <div>
                 <label class="mr-3" for="Nome">Nome:</label>
-                <input class="p-2 rounded-md border-orange-400 border" name="nome" type="text">
+                <input class="p-2 rounded-md border-orange-400 border" formControlName="nome" name="nome" type="text">
             </div>
             <span class="text-blue-700" *ngIf="campoEstaValido('senha')">Senha deve ser preenchida!</span>
             <div>
                 <label for="senha" class="mr-3">Senha:</label>
-                <input name="senha"
+                <input name="senha" formControlName="senha"
                     class="p-2 rounded-md border-orange-400 border outline-none focus:border-black focus:border-2 focus:border-l-orange-900 focus:ring-black "
                     [type]="mostrarSenhaBool ? 'text' : 'password'">
                 <div class="items-center mt-4 flex justify-center w-full gap-2">
                     <input type="checkbox" (change)="mostrarSenha()"><span>Mostrar Senha</span>
                 </div>
+            </div>
+            <div>
+                <span *ngIf="mensagemErro() != ''">{{ mensagemErro() }}</span>
             </div>
             <button [disabled]="!btnLogar()" type="submit"
                 class="text-xl text-white border-[1px] border-orange-600 active:bg-orange-300  active:border-orange-400 disabled:cursor-not-allowed w-[50%] bg-orange-500 hover:bg-orange-400 p-2 rounded-md">Logar</button>
