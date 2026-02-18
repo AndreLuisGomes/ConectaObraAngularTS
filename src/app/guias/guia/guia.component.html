@@ -22,9 +22,10 @@
                 <button class="btn-delete p-2 rounded-md bg-red-500 hover:bg-red-400 text-white"
                     type="button">Apagar</button>
             </div>
-            <div class="col-span-3 text-2xl font-semibold text-center text-base text-orange-600">{{ guia.nome}}</div>
-            <div class="col-span-3 text-2xl text-sm text-center"></div>
-            <div class="col-span-4 text-2xl text-sm text-gray-600 text-center"></div>
+            <div class="col-span-2 font-semibold text-center text-base text-orange-600">{{ guia.nome}}</div>
+            <div class="col-span-2 text-sm text-center">{{ guia.cliente.nome }}</div>
+            <div class="col-span-2 text-sm text-gray-600 text-center">{{ guia.guiaStatus }}</div>
+            <div class="col-span-2 text-sm text-gray-600 text-center">{{ guia.localizacao }}</div>
         </div>
     </div>
 

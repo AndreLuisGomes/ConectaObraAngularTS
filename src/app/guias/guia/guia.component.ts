@@ -16,10 +16,17 @@ export class GuiaComponent implements OnInit {
   constructor(
     private guiaService: GuiaService, private layoutService : LayoutService){
     this.layoutService.definirTitulo('Listar Guias')
-
   }
 
   ngOnInit(): void {
-    
+    this.guiaService.obterGuiasPorParametro(null, null, null, null).subscribe({
+      next: (guia) => {
+        this.guias = guia;
+        console.log('Deu certo!')
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
   }
 }
