@@ -1,8 +1,10 @@
-import { computed, inject, Injectable, signal, Signal, Type } from '@angular/core';
-import { Route, Router } from '@angular/router';
-import { Observable, tap } from 'rxjs';
-import { AuthResponse, UsuarioLoginRequest } from '../models/usuario';
 import { HttpClient } from '@angular/common/http';
+import { computed, Injectable, signal } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable, tap } from 'rxjs';
+import { AuthResponse } from '../models/authResponse';
+import { LoginRequest } from '../models/loginRequest';
+
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +23,7 @@ export class AuthService {
 
   public usuario = this.usuarioLogado.asReadonly();
 
-  logar(usuarioLoginRequest: UsuarioLoginRequest): Observable<AuthResponse> {
+  logar(usuarioLoginRequest: LoginRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.apiURL}/logar`, usuarioLoginRequest)
     .pipe(tap((authResponse) => {
       this.usuarioLogado.set(authResponse)
