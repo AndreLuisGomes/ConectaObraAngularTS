@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { LayoutService } from '../../services/layout.service';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
@@ -10,8 +12,9 @@ import { LayoutService } from '../../services/layout.service';
 export class LayoutComponent implements OnInit{
 
   titulo : string = '';
+   router = inject(Router);
 
-  constructor(private layoutService : LayoutService){
+  constructor(private layoutService : LayoutService, private authService : AuthService){
   }
   
   ngOnInit(): void {
@@ -20,6 +23,8 @@ export class LayoutComponent implements OnInit{
     })
   }
 
-  
-
+  deslogar(){
+    this.authService.deslogar();
+    this.router.navigate(["/auth/fazer-login"]);
+  }
 }
