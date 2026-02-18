@@ -13,7 +13,7 @@ import { ApiError } from '../models/errors/error';
 })
 export class AuthComponent {
 
-  btnLogar = signal<boolean>(true);
+  carregando = signal<boolean>(false);
   // botaoLogar = computed(() => this.btnLogar());
   senhaValida = signal<boolean>(true);
   mensagemErro = signal<string>("");
@@ -31,22 +31,25 @@ export class AuthComponent {
 
   logar() {
     this.loginForm.markAllAsTouched();
-    console.log('Entrando no logar');
-    this.btnLogar.set(true);
     if (this.loginForm.valid) {
+      this.carregando.set(true);
       console.log('Entrando no If')
       this.authService.logar(this.loginForm.value).subscribe({
         next: () => {
           console.log('Entrando no next')
           this.router.navigate(['/suportes']);
         },
-        error: (err : ApiError) => {
-          this.mensagemErro.set(err.error);
+        error: (err: ApiError) => {
+          if(err.status === 401){
+            this.mensagemErro.set('Usuário ou senha inválidos!')
+          }else {
+            this.mensagemErro.set('Erro desconhecido!')
+          }
           console.error(err);
         }
       })
+      this.carregando.set(false);
     }
-    this.btnLogar.set(true);
   }
 
   campoEstaValido(campoNome: string): boolean {
