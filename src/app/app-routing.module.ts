@@ -10,8 +10,7 @@ const routes: Routes = [
     loadChildren: () => import('./template/template.module').then(m => m.TemplateModule)
   }, {
     path: "auth/fazer-login",
-    component: AuthComponent,
-    // loadComponent: () => import('./auth/auth.component').then(m => m.AuthComponent)
+    loadComponent: () => import('./auth/auth.component').then(m => m.AuthComponent)
   },
   {
     path: "**",
