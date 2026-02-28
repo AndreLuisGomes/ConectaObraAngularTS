@@ -54,7 +54,8 @@ export class AuthComponent {
 
   campoEstaValido(campoNome: string): boolean {
     const campo = this.loginForm.get(campoNome);
-    return !!campo && campo?.valid && (campo?.touched || campo?.dirty)
+    return !!campo && campo?.invalid && (campo?.touched || campo?.dirty)
+    // return !!control && control?.invalid && (control.dirty || control?.touched);
   }
 
   mostrarSenha() {
