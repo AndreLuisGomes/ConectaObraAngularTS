@@ -22,8 +22,8 @@
             <div>
                 <span *ngIf="mensagemErro() != ''">{{ mensagemErro() }}</span>
             </div>
-            <button [disabled]="!!carregando()" type="submit"
-                class="text-xl text-white border-[1px] border-orange-600 active:bg-orange-300  active:border-orange-400 disabled:cursor-not-allowed w-[50%] bg-orange-500 hover:bg-orange-400 p-2 rounded-md">Logar</button>
+            <button [disabled]="carregando()" type="submit"
+                class="text-xl text-white border-[1px] border-orange-600 active:bg-orange-300  active:border-orange-400 disabled:cursor-not-allowed w-[50%] bg-orange-500 hover:bg-orange-400 p-2 rounded-md">{{ !!carregando() ? 'Logando' : 'Logar' }}</button>
         </div>
     </form>
 </div>
