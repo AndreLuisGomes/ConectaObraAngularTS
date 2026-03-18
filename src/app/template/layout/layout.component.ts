@@ -20,11 +20,10 @@ export class LayoutComponent implements OnInit{
   ngOnInit(): void {
     this.layoutService.titulo$.subscribe(t => {
       this.titulo = t;
-    })
+    });
   }
 
   deslogar(){
     this.authService.deslogar();
-    this.router.navigate(["/auth/fazer-login"]);
   }
 }
