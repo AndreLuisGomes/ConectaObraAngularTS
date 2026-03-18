@@ -1,6 +1,6 @@
 export interface AuthResponse {
     nome: string | null;
-    acessToken: string | null;
+    accessToken: string | null;
     refreshToken: string | null;
     role: string | null;
 }
