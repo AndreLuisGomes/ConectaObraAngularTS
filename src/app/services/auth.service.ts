@@ -32,7 +32,7 @@ export class AuthService {
   }
 
   refreshToken(refreshToken : string) : Observable<RefreshTokenResponse>{
-    return this.http.post<RefreshTokenResponse>(`${environment.apiRefreshTokenUrl}`, refreshToken);
+    return this.http.post<RefreshTokenResponse>(`${environment.apiRefreshTokenUrl}`, {refreshToken : refreshToken});
   }
 
   // refreshToken(refreshToken : string) : void{
@@ -54,6 +54,7 @@ export class AuthService {
     if(usuario){
       usuario.accessToken = acessToken;
       usuario.refreshToken = refreshToken;
+      this.definirUsuario(usuario);
     }
   }
 

@@ -33,10 +33,8 @@ export class AuthComponent {
     this.loginForm.markAllAsTouched();
     if (this.loginForm.valid) {
       this.carregando.set(true);
-      console.log('Entrando no If')
       this.authService.logar(this.loginForm.value).subscribe({
         next: () => {
-          console.log('Entrando no next')
           this.router.navigate(['/suportes']);
         },
         error: (err: ApiError) => {
