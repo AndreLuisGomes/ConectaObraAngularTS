@@ -40,7 +40,7 @@ export class GuiaService {
     return this.http.get<Guia[]>(this.apiUrl, {params: params})
   }
 
-  salvarGuia(guia: Guia){
-    this.http.post<Guia>(this.apiUrl, guia);
+  salvarGuia(guia: Guia) : Observable<Guia>{
+    return this.http.post<Guia>(this.apiUrl, guia);
   }
 }
