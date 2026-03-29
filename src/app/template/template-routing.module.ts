@@ -10,16 +10,21 @@ const routes: Routes = [
     component: LayoutComponent,
     children:[
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/suportes'
+      },
+      {
         path: 'suportes',
         loadChildren: () => import('../suportes/suportes.module').then(m => m.SuportesModule)
       },
       {
         path: 'clientes',
-        loadChildren: () => import('../clientes/clientes.module').then(m => ClientesModule)
+        loadChildren: () => import('../clientes/clientes.module').then(m => m.ClientesModule)
       },
       {
         path: 'guias',
-        loadChildren: () => import('../guias/guias.module').then(m => GuiasModule)
+        loadChildren: () => import('../guias/guias.module').then(m => m.GuiasModule)
       }
     ]
   }
