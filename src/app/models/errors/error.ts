@@ -7,9 +7,12 @@ export interface Error{
 }
 
 export interface ApiError{
-    timestamp: string;
     status: number;
-    error: string;
-    message: string;
-    path: string;   
+    errors: ErrorFields[];
+    mensagem: string;
+}
+
+export interface ErrorFields{
+    campo : string;
+    mensagem : string;
 }
