@@ -9,37 +9,34 @@
     <label class="text-2xl font-semibold text-gray-700" for="nome">Nome:</label>
     <input
         class="text-2xl w-full p-3 rounded-md shadow-md focus:outline-none focus:ring focus:ring-blue-400 focus:ring-1"
-        type="text" formControlName="nome" id="nome" name="nome" placeholder="Ex: Cliente 1">
+        type="text" formControlName="nome" id="nome" name="nome" placeholder="Ex: Guia 01">
     <span class="text-red-500 text-sm" *ngIf="verificarCampos('nome')">Campo Obrigatório!</span>
 
     <!-- Input de Status da Guia -->
 
-    <label class="text-2xl font-semibold text-gray-700" for="status">Status</label>
-    <select class="p-3 text-2xl text-gray-700" formControName="status" name="status" id="status">
-        <option disabled selected>Selecione uma opção de Status</option>
+    <label class="text-2xl font-semibold text-gray-700" for="status">Status:</label>
+    <select class="p-3 text-2xl text-gray-700" formControlName="status" name="status" id="status">
+        <option disabled selected value="">Selecione uma opção de Status</option>
         <option *ngFor="let valor of status" [value]="valor">{{ valor }}</option>
     </select>
-    <p *ngIf="camposForm.get('status')?.value">Valor selecionado: {{ camposForm.get('status')?.value }}</p>
     <span class="text-red-500 text-sm" *ngIf="verificarCampos('status')">Campo Obrigatório!</span>
 
     <!-- Input de nome de Cliente -->
 
-    <label class="text-2xl font-semibold text-gray-700" for="clienteNome">Status</label>
-    <select class="p-3 text-2xl text-gray-700" formControName="clienteNome" name="clienteNome" id="status">
-        <option disabled selected>Selecione um Cliente</option>
+    <label class="text-2xl font-semibold text-gray-700" for="clienteId">Cliente:</label>
+    <select class="p-3 text-2xl text-gray-700" formControlName="clienteId" name="clienteId" id="status">
+        <option disabled selected value="">Selecione um Cliente</option>
         <option *ngFor="let valor of clientes()" [value]="valor.id">{{ valor.nome }}</option>
     </select>
-    <!-- <p *ngIf="camposForm.get('clienteNome')?.value">Valor selecionado: {{ camposForm.get('status')?.value }}</p> -->
-    <p >{{ camposForm.get('clienteNome')?.errors }}</p>
-    <span class="text-red-500 text-sm" *ngIf="verificarCampos('clienteNome')">Campo Obrigatório!</span>
+    <span class="text-red-500 text-sm" *ngIf="verificarCampos('clienteId')">Campo Obrigatório!</span>
 
     <!-- Input de Localização -->
 
-    <label class="text-2xl font-semibold text-gray-700" for="localizacao">Localização da Obra:</label>
+    <label class="text-2xl font-semibold text-gray-700" for="local">Localização da Obra:</label>
     <input
         class="text-2xl w-full p-3 rounded-md shadow-md focus:outline-none focus:ring focus:ring-blue-400 focus:ring-1"
-        type="text" formControlName="localizacao" id="localizacao" name="localizacao" placeholder="Ex: Rua Do Recife">
-    <span *ngIf="verificarCampos('localizacao')" class="text-red-500 text-sm ">Campo Obrigatório!</span>
+        type="text" formControlName="local" id="local" name="local" placeholder="Ex: Rua das Aroeiras">
+    <span *ngIf="verificarCampos('local')" class="text-red-500 text-sm ">Campo Obrigatório!</span>
     <button
         class="text-white text-2xl p-3 bg-[rgba(255,89,23,1)] rounded-md shadow-md hover:bg-orange-400 items-center transition w-1/5 self-center text-center"
         type="submit" (click)="cadastrarGuia(); $event.stopPropagation()">Cadastrar</button>
@@ -47,4 +44,6 @@
 
     <!-- Mensagem Feedback -->
 
+    <span class="text-center font-semibold text-2xl" 
+    *ngIf="mensagemFeedback() != ''">{{ mensagemFeedback() }}</span>
 </form>
