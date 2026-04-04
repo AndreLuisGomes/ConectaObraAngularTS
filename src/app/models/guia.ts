@@ -4,6 +4,6 @@ export interface Guia{
     id: string
     nome: string
     cliente: Cliente
-    guiaStatus: string
-    localizacao: string
+    status: string
+    local: string
 }

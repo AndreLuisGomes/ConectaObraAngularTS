@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment.development';
 import { Observable } from 'rxjs';
 import { Guia } from '../models/guia';
+import { GuiaDTO } from '../models/dtos/guiaDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +41,7 @@ export class GuiaService {
     return this.http.get<Guia[]>(this.apiUrl, {params: params})
   }
 
-  salvarGuia(guia: Guia) : Observable<Guia>{
-    return this.http.post<Guia>(this.apiUrl, guia);
+  salvarGuia(guia: GuiaDTO) : Observable<GuiaDTO>{
+    return this.http.post<GuiaDTO>(this.apiUrl, guia);
   }
 }
